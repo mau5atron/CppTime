@@ -50,7 +50,7 @@ int main(void)
   // #define pi 3.1415926
   const int months_in_year {12};
   cout << "pi is: " << pi << endl;
-  cout << "there are " << to_string(months_in_year) << " in the year" << endl;
+  cout << "there are " << to_string(months_in_year) << " months in the year" << endl;
 
   return 0;
 }
