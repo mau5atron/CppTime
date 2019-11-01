@@ -12,7 +12,7 @@ int main(void)
     if(vec_el != -99){
       /*
         if there are no -99s, then count will keep incrementing until it reaches
-        the size of the vector
+        the size of the vector 
       */ 
       ++count;
     } else {
@@ -22,7 +22,7 @@ int main(void)
 
   // lol re-read the question 
   // only asks to increment count up until you reach -99, else break the loop
-  // and return count 
+  // and return count after reaching -99
   // if(count == 0){
   //   cout 
   //     << "There are no -99s in your vector! There are, however, " 
