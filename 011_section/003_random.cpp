@@ -15,6 +15,14 @@ int main(void)
   // seed the random num generator 
   // if you don't seed the generator you will get the same sequence of random
   // numbers on every run
+
+  cout << "The RAND_MAX on my system is: " << RAND_MAX << endl;
+  srand(time(nullptr)); // null pointer on my system time random number 
+
+  for (size_t i { 1 }; i <= count ; ++i){
+    random_num = rand() % (max + min); // generate a random number [min, max]
+    cout << "Random number: " << random_num << endl;
+  }
  
   return 0;
 }
