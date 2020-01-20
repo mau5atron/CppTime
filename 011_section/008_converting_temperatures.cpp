@@ -5,7 +5,6 @@ using namespace std;
 void menu();
 double convert_to_celsius(double);
 double convert_to_kelvin(double);
-
 double convert_to_celsius(double temp){
   return ( (5.0 / 9.0) * (temp - 32) );
 }
