@@ -14,6 +14,12 @@ public:
     age = 0;
   }
 
+  // adding overloaded constructor
+  Dog(string name_val, int age_val){
+    name = name_val;
+    age = age_val;
+  }
+
   string get_name(){
     return name;
   }
