@@ -14,12 +14,12 @@ Savings_Account::Savings_Account( std::string name_val, double balance_val, doub
   << std::endl;
 }
 
-Savings_Account::Savings_Account() : Savings_Account { "Unknown account", 0.0, 5.0 }{
-  std::cout << "Savings Account no args constructor" << std::endl;
-}
+// Savings_Account::Savings_Account() : Savings_Account { "Unknown account", 0.0, 5.0 }{
+//   std::cout << "Savings Account no args constructor" << std::endl;
+// }
 
 Savings_Account::~Savings_Account(){
-  std::cout << "Savings Account Destructor" << std::endl;
+  std::cout << "\nSavings_Account destructor" << "\n" << std::endl;
 }
 
 // overwriting inherited deposit to add the interest rate
@@ -31,4 +31,9 @@ bool Savings_Account::deposit( double amount ){
     std::cout << "Deposit must be greater than 0." << std::endl;
     return false;
   }
+}
+
+std::ostream &operator<<( std::ostream &os, const Savings_Account &account ){
+  os << "[Savings_Account: " << account.name << ", balance: " << account.balance << "]";
+  return os;
 }
