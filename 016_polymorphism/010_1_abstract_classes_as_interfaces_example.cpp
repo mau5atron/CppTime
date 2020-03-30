@@ -1,24 +1,42 @@
 #include <iostream>
 
 // This file is the same as 010_0_ but with the printable interface called
-// printable in order to print for ever class
+// printable in order to print objects for every class
 
-// Account
-class Account
+// class interface
+class I_Printable
+{
+  friend std::ostream &operator<<( std::ostream &os, const I_Printable &obj );
+public:
+  virtual void print( std::ostream &os ) const = 0;
+};
+
+std::ostream &operator<<( std::ostream &os, const I_Printable &obj ){
+  obj.print( os );
+  return os;
+}
+
+// Account - inherit from I_Printable
+class Account : public I_Printable
 {
   // friend std::ostream &operator<<( std::ostream &os, const Account &account );
 public:
-  virtual void withdraw( double amount ){
+  void withdraw( double amount ){
     std::cout << "In Account::withdraw" << std::endl;
+  }
+
+  virtual void print( std::ostream &os ) const override {
+    os << "Account Display";
   }
 
   virtual ~Account(){}
 };
 
-std::ostream &operator<<( std::ostream &os, const Account &account ){
-  os << "Account display";
-  return os;
-}
+// removing for Polymorphic implementation of printable virtual function class thingie
+// std::ostream &operator<<( std::ostream &os, const Account &account ){
+//   os << "Account display";
+//   return os;
+// }
 
 
 // Checking
@@ -30,13 +48,17 @@ public:
     std::cout << "In Checking::withdraw" << std::endl;
   }
 
+  virtual void print( std::ostream &os ) const override {
+    os << "Checking Display";
+  }
+
   virtual ~Checking(){}
 };
 
-std::ostream &operator<<( std::ostream &os, const Checking &account ){
-  os << "Checking Account display";
-  return os;
-}
+// std::ostream &operator<<( std::ostream &os, const Checking &account ){
+//   os << "Checking Account display";
+//   return os;
+// }
 
 // Savings
 class Savings : public Account
@@ -47,13 +69,17 @@ public:
     std::cout << "In Savings::withdraw" << std::endl;
   }
 
+  virtual void print( std::ostream &os ) const override {
+    os << "Savings Display";
+  }
+
   virtual ~Savings(){}
 };
 
-std::ostream &operator<<( std::ostream &os, const Savings &account ){
-  os << "Savings Account display";
-  return os;
-}
+// std::ostream &operator<<( std::ostream &os, const Savings &account ){
+//   os << "Savings Account display";
+//   return os;
+// }
 
 // Trust
 class Trust : public Account
@@ -64,12 +90,33 @@ public:
     std::cout << "In Trust::withdraw" << std::endl;
   }
 
+  virtual void print( std::ostream &os ) const override {
+    os << "Trust Display";
+  }
+
   virtual ~Trust(){}
 };
 
-std::ostream &operator<<( std::ostream &os, const Trust &account ){
-  os << "Trust Account display";
-  return os;
+// std::ostream &operator<<( std::ostream &os, const Trust &account ){
+//   os << "Trust Account display";
+//   return os;
+// }
+
+class Dog : public I_Printable
+{
+public:
+  virtual void print( std::ostream &os ) const override {
+    os << "Woof Woof";
+  }
+
+  virtual ~Dog(){}
+};
+
+// 1.1 can also just declare a regular function that accepts an I_Printable object
+// to print
+
+void print( const I_Printable &obj ){
+  std::cout << obj << std::endl;
 }
 
 int main(void)
@@ -82,16 +129,25 @@ int main(void)
 
   Account a;
   std::cout << a << std::endl;
+  a.withdraw( 1000 );
 
   Savings b;
   std::cout << b << std::endl;
-
+  b.withdraw( 1000 );
   Checking c;
   std::cout << c << std::endl;
-
+  c.withdraw( 1000 );
   Trust d;
   std::cout << d << std::endl;
+  d.withdraw( 1000 );
 
+  std::cout << std::endl;
+
+  Dog *dog = new Dog();
+  std::cout << *dog << std::endl;
+  // 1.1
+  print( *dog ); // also prints Woof Woof
+  delete dog;
   return 0;
 }
 
