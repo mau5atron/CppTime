@@ -1,5 +1,6 @@
 #include <iostream>
 
+// Account
 class Account
 {
   friend std::ostream &operator<<( std::ostream &os, const Account &account );
@@ -16,6 +17,8 @@ std::ostream &operator<<( std::ostream &os, const Account &account ){
   return os;
 }
 
+
+// Checking
 class Checking : public Account
 {
   friend std::ostream &operator<<( std::ostream &os, const Checking &account );
@@ -23,10 +26,69 @@ public:
   virtual void withdraw( double amount ){
     std::cout << "In Checking::withdraw" << std::endl;
   }
+
+  virtual ~Checking(){}
 };
+
+std::ostream &operator<<( std::ostream &os, const Checking &account ){
+  os << "Checking Account display";
+  return os;
+}
+
+// Savings
+class Savings : public Account
+{
+  friend std::ostream &operator<<( std::ostream &os, const Savings &account );
+public:
+  virtual void withdraw( double amount ){
+    std::cout << "In Savings::withdraw" << std::endl;
+  }
+
+  virtual ~Savings(){}
+};
+
+std::ostream &operator<<( std::ostream &os, const Savings &account ){
+  os << "Savings Account display";
+  return os;
+}
+
+// Trust
+class Trust : public Account
+{
+  friend std::ostream &operator<<( std::ostream &os, const Trust &account );
+public:
+  virtual void withdraw( double amont ){
+    std::cout << "In Trust::withdraw" << std::endl;
+  }
+
+  virtual ~Trust(){}
+};
+
+std::ostream &operator<<( std::ostream &os, const Trust &account ){
+  os << "Trust Account display";
+  return os;
+}
 
 int main(void)
 {
+  Account *p1 = new Account();
+  Account *p2 = new Savings();
+
+  std::cout << *p1 << std::endl;
+  std::cout << *p2 << std::endl;
+
+  Account a;
+  std::cout << a << std::endl;
+
+  Savings b;
+  std::cout << b << std::endl;
+
+  Checking c;
+  std::cout << c << std::endl;
+
+  Trust d;
+  std::cout << d << std::endl;
+
   return 0;
 }
 
