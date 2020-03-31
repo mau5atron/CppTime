@@ -14,7 +14,7 @@ int main(void)
     virtual functions ! ) - it is being bound statically
   - Your challenge is the following
 
-    - modify the Account class so that it is now an abstract class by adding the
+    1. modify the Account class so that it is now an abstract class by adding the
       following pure virtual functions:
         
         virtual bool deposit( double amount ) = 0;
@@ -23,7 +23,7 @@ int main(void)
         Hint: you can implement these functions in the Account class if it makes
         sense
 
-    - Create an I_Printable class interface as we did in the course and provide
+    2. Create an I_Printable class interface as we did in the course and provide
       functionality so all accounts are printable to an ostream using the
       overloaded insertion operator
 
@@ -36,7 +36,7 @@ int main(void)
       simple destructor for the obj
       };
 
-    - Modify the functions in the Account_Util files we only have one version of
+    3. Modify the functions in the Account_Util files we only have one version of
       each. For example:
 
         void display( const std::vector<Account *> &accounts );
