@@ -14,8 +14,8 @@ int main(void)
     virtual functions ! ) - it is being bound statically
   - Your challenge is the following
 
-    1. modify the Account class so that it is now an abstract class by adding the
-      following pure virtual functions:
+    1. modify the Account class so that it is now an abstract class by adding
+       the following pure virtual functions:
         
         virtual bool deposit( double amount ) = 0;
         virtual bool withdraw( double amount ) = 0;
@@ -32,8 +32,8 @@ int main(void)
         friend std::ostream<<( std::ostream &os, const I_Printable &obj );
       public:
         virtual void print( std::ostream &os ) const = 0;
-      virtual ~I_Printable() = default; // default tells the compiler to do a
-      simple destructor for the obj
+        virtual ~I_Printable() = default; // default tells the compiler to do a 
+        simple destructor for the obj
       };
 
     3. Modify the functions in the Account_Util files we only have one version of

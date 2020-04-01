@@ -44,7 +44,7 @@ public:
  * 
  * 4. An abstract class can have constructors.
  * 
- * 5. 
+ *
 ****************************************************************/
 
 #endif
