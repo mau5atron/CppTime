@@ -4,8 +4,9 @@
 class Account
 {
 public:
-  virtual void withdraw( double amount );
-  virtual void deposit( double amount );
+  // pure virtual functions
+  virtual void withdraw( double amount ) = 0;
+  virtual void deposit( double amount ) = 0;
 
   virtual ~Account();
 };
