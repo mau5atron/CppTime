@@ -1,8 +1,8 @@
-#ifndef _SAVINGS_H_
-#define _SAVINGS_H_
+#ifndef _SAVINGS_ACCOUNT_H_
+#define _SAVINGS_ACCOUNT_H_
 #include "Account.h"
 
-class Savings : public Account
+class Savings_Account : public Account
 {
 public:
   virtual void withdraw( double amount ) override;
