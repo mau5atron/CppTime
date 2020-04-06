@@ -9,6 +9,7 @@ public:
   // make this a pure virtual function so that it is overridable, dont implement
   // for I_Printable
   virtual void print( std::ostream &os ) const = 0;
+  virtual ~I_Printable() = default;
 };
 
 /***************************************************************
@@ -44,7 +45,11 @@ public:
  * 
  * 4. An abstract class can have constructors.
  * 
- *
+ * An interface does nmot have implementation of any ofits methods, it can be
+ * considered as a collection of method declaractions. In C++, an interface can
+ * be simulated by making all methods as pure virtual
+ * 
+ * In Java, there is a separate key-word for interface.
 ****************************************************************/
 
 #endif
