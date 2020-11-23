@@ -1,9 +1,8 @@
 #include "headers/Account.h"
 
-Account::Accoount( std::string name_val, double balance_val ) 
+Account::Account( std::string name_val, double balance_val ) 
   : name { name_val }, balance { balance_val }{
 }
-
 
 bool Account::withdraw( double amount ){
   if( ( balance - amount ) >= 0 ){
@@ -24,3 +23,15 @@ bool Account::deposit( double amount ){
     return false;
   }
 }
+
+void Account::print( std::ostream &os ) const {
+  os.precision(2);
+  os << std::fixed;
+  os << "[Account: " << name << " : " << balance << "]";
+}
+
+// dont need this because we have the print function
+// std::ostream &operator<<( std::ostream &os, const Account &account ){
+//   os << "[Account: " << account.name << " : " << account.balance << "]";
+//   return os;
+// }
