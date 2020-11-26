@@ -110,10 +110,26 @@ int main(void){
   std::cin >> gallons;
 
   // miles_per_gal = miles / gallons; // crashes when denominator is 0
-  miles_per_gal = static_cast<double> miles / gallons;
 
+  /* if ( gallons != 0 ){
+    miles_per_gal = static_cast<double>(miles / gallons);
+    std::cout << "\nMiles per gallon: " << miles_per_gal << "\n";
+  } else {
+    std::cerr << "Sorry, can't divide by zero.\n";
+  } */
 
-  std::cout << "\nMiles per gallon: " << miles_per_gal << "\n";
+  // using try block
+
+  try {
+    if ( gallons == 0 ){
+      throw 0;
+    }
+
+    miles_per_gal = static_cast<double>(miles / gallons);
+    std::cout << "\nMiles per gallon: " << miles_per_gal << "\n";
+  } catch ( int &ex ){ // catches the 0 that is thrown -> throw 0;
+    std::cerr << "Sorry, can't divide by zero.\n";
+  }
 
   return 0;
 }
