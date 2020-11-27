@@ -13,5 +13,13 @@
          should be thrown from the Account class constructor in an account
          object where the object is created with a negative balance.
 
-      2. Derive Insufficient
+      2. Derive InsufficientFundsException from std::exception and implement the
+         what() method to provide an exception message. This exception object
+         should be thrown if a withdraw results in a negative balance. Your
+         should throw this exception from the Account withdraw method.
 */
+
+int main( int argc, char **argv ){
+  
+  return 0;
+}
