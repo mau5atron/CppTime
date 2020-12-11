@@ -1,6 +1,8 @@
 #ifndef _ACCOUNT_H_
 #define _ACCOUNT_H_
 #include "I_Printable.h"
+#include "IllegalBalanceException.h"
+#include "InsufficientFundsException.h"
 #include <iostream>
 #include <string>
 
@@ -17,9 +19,11 @@ protected:
   double balance;
 public:
   // pure virtual functions
-  Account( std::string name = def_name, double balance = def_balance );
-  virtual bool withdraw( double amount ) = 0;
-  virtual bool deposit( double amount ) = 0;
+  Account();
+  Account( std::string name_val, double balance_val );
+  // had to change withdraw and deposit from pure virtual in order to compile
+  virtual bool withdraw( double amount );
+  virtual bool deposit( double amount );
   virtual void print( std::ostream &os ) const override;
   virtual ~Account() = default;
 };

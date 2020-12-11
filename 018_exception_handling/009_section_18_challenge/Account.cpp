@@ -1,7 +1,20 @@
 #include "headers/Account.h"
+#include <iostream>
 
-Account::Account( std::string name_val, double balance_val ) 
-  : name { name_val }, balance { balance_val }{
+Account::Account(){
+  // needed this default constructor without arguments, otherwise the = def_name
+  // one would fire and create an unknown object
+  name = def_name;
+  balance = def_balance;
+}
+
+Account::Account( std::string name_val, double balance_val ){
+  if ( balance_val < 0 ){
+    throw IllegalBalanceException();
+  }
+
+  name = name_val;
+  balance = balance_val;
 }
 
 bool Account::withdraw( double amount ){
@@ -9,8 +22,9 @@ bool Account::withdraw( double amount ){
     balance -= amount;
     return true;
   } else {
-    std::cout << "Could not withdraw from Account." << std::endl;
-    return false;
+    // std::cout << "Could not withdraw from Account." << std::endl;
+    // return false;
+    throw InsufficientFundsException();
   }
 }
 

@@ -1,12 +1,29 @@
 #include "headers/Checking_Account.h"
 
-Checking_Account::Checking_Account( std::string name_val, double balance_val ) 
-  : Account { name_val, balance_val }{
+Checking_Account::Checking_Account(){
+  name = def_name;
+  balance = def_balance;
+}
+
+Checking_Account::Checking_Account( std::string name_val, double balance_val ){
+  try {
+    Account(name_val, balance_val);
+    std::cout << "name: " << name_val << ", balance: " << balance_val << "\n";
+  } catch ( const IllegalBalanceException &ex ){
+    std::cout << ex.what() << "\n";
+  }
 }
 
 bool Checking_Account::withdraw( double amount ){
-  amount += per_check_fee;
-  return Account::withdraw( amount );
+  bool money_withdrawn = false;
+  try {
+    amount += per_check_fee;
+    money_withdrawn = Account::withdraw( amount );
+  } catch ( const InsufficientFundsException &ex ){
+    std::cout << ex.what() << "\n";
+  }
+  
+  return money_withdrawn;
 }
 
 bool Checking_Account::deposit( double amount ){

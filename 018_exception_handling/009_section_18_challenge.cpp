@@ -19,7 +19,19 @@
          should throw this exception from the Account withdraw method.
 */
 
+/*
+  Note:
+    - I should create the classes in their own files that extend std::exception
+    - also need to define the the "what()" message should output for the error messages.
+*/
+
+#include "009_section_18_challenge/headers/Account.h"
+#include "009_section_18_challenge/headers/Checking_Account.h"
+
 int main( int argc, char **argv ){
-  
+  Checking_Account other_account { "Amanda", 10000 };
+  Checking_Account my_account { "Gabriel", -1000 }; // fails with IllegalBalanceException
+  other_account.withdraw(2000); // fails with InsufficientFundsException
+
   return 0;
 }
