@@ -85,6 +85,7 @@ int main(void){
   std::cout
     << std::setw(10) << std::left << name
     << std::setw(5) << num
+    << 
 
   return 0;
 }
