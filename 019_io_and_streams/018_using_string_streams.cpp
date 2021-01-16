@@ -82,10 +82,40 @@ int main(void){
   std::string info { "Moe 100 1234.5" };
   std::istringstream input_string_stream { info };
 
+  input_string_stream >> name >> num >> total;
   std::cout
     << std::setw(10) << std::left << name
     << std::setw(5) << num
-    << 
+    << std::setw(10) << total << "\n";
+
+  std::cout << "\n---------------\n";
+
+  std::ostringstream output_string_stream {};
+  output_string_stream
+    << std::setw(10) << std::left << name
+    << std::setw(5) << num
+    << std::setw(10) << total << "\n";
+  std::cout << output_string_stream.str() << "\n";
+
+  std::cout << "\nData validation: \n";
+
+  int value {};
+  std::string entry {};
+  bool done = false;
+
+  do {
+    std::cout << "Please enter an integer: ";
+    std::cin >> entry;
+    std::istringstream validator {entry};
+    if ( validator >> value ){
+      done = true;
+    } else {
+      std::cout << "Sorry, thats not an integer\n";
+    }
+
+    // discards the input buffer
+    std::cin.ignore( std::numeric_limits<std::streamsize>::max(), '\n');
+  } while (!done);
 
   return 0;
 }
